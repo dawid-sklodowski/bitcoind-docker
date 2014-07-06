@@ -33,4 +33,4 @@ EXPOSE 18332
 # Check that bitcoind exists on path
 RUN file `which bitcoind`
 
-ENTRYPOINT ["bitcoind", "-printtoconsole", "-server", "-rpcuser=bitcoinrpc", "-rpcpassword=testing", "-txindex"]
+ENTRYPOINT ["bitcoind", "-printtoconsole", "-server", "-rpcuser=bitcoinrpc", "-rpcpassword=testing", "-txindex", "-gen"]
