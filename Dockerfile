@@ -19,8 +19,6 @@ RUN echo "$BITCOIN_DOWNLOAD_MD5_CHECKSUM  v$BITCOIN_DOWNLOAD_VERSION.tar.gz" | m
 RUN tar xfz v$BITCOIN_DOWNLOAD_VERSION.tar.gz && mv bitcoin-$BITCOIN_DOWNLOAD_VERSION bitcoin
 
 WORKDIR /tmp/bitcoin
-# ADD install-berkeley-db.sh /tmp/bitcoin/install-berkeley-db.sh
-# RUN ./install-berkeley-db.sh
 RUN ./autogen.sh
 RUN ./configure
 
@@ -33,4 +31,4 @@ EXPOSE 18332
 # Check that bitcoind exists on path
 RUN file `which bitcoind`
 
-ENTRYPOINT ["bitcoind", "-printtoconsole", "-server", "-rpcuser=bitcoinrpc", "-rpcpassword=testing", "-txindex", "-gen"]
+ENTRYPOINT ["bitcoind", "-printtoconsole", "-server", "-rpcuser=bitcoinrpc", "-rpcpassword=testing", "-txindex", "-testnet", "-rpcallowip=*"]
